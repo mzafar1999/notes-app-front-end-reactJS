@@ -34,6 +34,7 @@ const Login = () => {
             <Input placeholder='Password' type='password' />
             <Button className='btn btn-primary'> Login </Button>
             <p>Don't have account? <LinkItem to={`/register`}>Register</LinkItem> </p>
+
            </Wrapper>
         </Container>
     )
