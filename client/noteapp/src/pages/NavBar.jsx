@@ -17,7 +17,7 @@ const NavBar = () => {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
     <Container>
-    <Navbar.Brand> <LinkItem to={`/`}>Notes</LinkItem> </Navbar.Brand>
+    <Navbar.Brand> <LinkItem to={`/`}>Notes App</LinkItem> </Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="me-auto">
