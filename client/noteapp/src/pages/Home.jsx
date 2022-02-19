@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { notes } from "./notes";
-import axios from 'axios'
 const Home = () => {
   useEffect(() => {
     

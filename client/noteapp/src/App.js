@@ -10,9 +10,9 @@ import NavBar from './pages/NavBar';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import { useSelector } from 'react-redux';
+import CreateNote from './pages/CreateNote';
 
 function App() {
-
   const user = useSelector(state=>state.user.currentUser)
   return (
     <Router>
@@ -23,6 +23,9 @@ function App() {
         </Route>
         <Route path={`/login`}>
          {user? <Redirect to='/'/>:<Login/>}
+        </Route>
+        <Route exact to='/create-note'>
+          <CreateNote/>
         </Route>
         <Route exact to='/'>
           <Home/>
