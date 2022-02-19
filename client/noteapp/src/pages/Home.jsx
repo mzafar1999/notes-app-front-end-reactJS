@@ -4,14 +4,8 @@ import { notes } from "./notes";
 import axios from 'axios'
 const Home = () => {
   useEffect(() => {
-    const getData = async()=>{
-      try {
-        const res = await axios.get('http://localhost:5000/api/users/')
-      } catch (error) {
-        
-      }
-    }
-    getData()
+    
+    
   }, [])
   
   return (

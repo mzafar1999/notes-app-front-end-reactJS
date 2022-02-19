@@ -9,9 +9,11 @@ import Login from './pages/Login';
 import NavBar from './pages/NavBar';
 import Home from './pages/Home';
 import Register from './pages/Register';
+import { useSelector } from 'react-redux';
 
 function App() {
-  const user = false
+
+  const user = useSelector(state=>state.user.currentUser)
   return (
     <Router>
       <NavBar/>

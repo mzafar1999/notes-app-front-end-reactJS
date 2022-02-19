@@ -3,6 +3,8 @@ import { Container } from "react-bootstrap";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import {useDispatch} from 'react-redux'
+import { loginFailure, loginStart, loginSuccess } from "../redux/userReducers";
 
 const Button = styled.button`
   margin-top: 0.8rem;
@@ -30,13 +32,30 @@ const LinkItem = styled(Link)`
     text-decoration: none;
   }
 `;
+
+const BASE_URL = 'http://localhost:5000/api/'
+const publicRequest = axios.create({
+    baseURL: BASE_URL
+})
+
+const login = async(dispatch, user) => {
+  dispatch(loginStart())
+  try {
+      const res = await publicRequest.post('/users/login', user)
+      dispatch(loginSuccess(res.data))
+  } catch (error) {
+      dispatch(loginFailure())
+  }
+}
+
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const handleLogin = async(e)=>{
+  const dispatch = useDispatch()
+  const handleLogin = (e)=>{
       e.preventDefault()
-      const res = await axios.post('http://localhost:5000/api/users/login',{email,password})
-  }
+      login(dispatch,{email,password})
+    }
 
   return (
     <Container>
