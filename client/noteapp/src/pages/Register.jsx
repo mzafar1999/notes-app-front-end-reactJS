@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Button = styled.button`
   margin-top: 0.8rem;
@@ -39,13 +40,19 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  const newUser =
-        {
+  const newUser = {
             username,
             email,
             password,
             confirmPasswowrd,
           }
+
+         if(password===confirmPasswowrd){
+            axios.post('http://localhost:5000/api/users/register',newUser)
+            console.log('user registered');
+         }else{
+           alert('Password and Confirm password are not equal!')
+         }
   };
   return (
     <Container>
@@ -73,8 +80,7 @@ const Register = () => {
           value={confirmPasswowrd}
         />
         <Button className="btn btn-primary" onClick={handleSubmit}>
-          {" "}
-          Register{" "}
+          Register
         </Button>
         <p>
           Already have account? <LinkItem to={`/login`}>Login</LinkItem>{" "}

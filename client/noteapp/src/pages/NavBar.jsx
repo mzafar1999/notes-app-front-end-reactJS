@@ -5,13 +5,12 @@ import styled from 'styled-components'
 
 const LinkItem = styled(Link)`
     text-decoration: none;
+    margin: 0 15px;
     color: white;
     &:hover{
-        color:#6e6e6e;
+        color:#7e7e7e;
     }
-    &:focus, &:visited, &:link, &:active {
-        text-decoration: none;
-    }
+  
 `;
 const NavBar = () => {
   return (
@@ -23,16 +22,13 @@ const NavBar = () => {
       <Nav className="me-auto">
       </Nav>
       <Nav>
-        <Nav.Link>
-        <LinkItem to='/register' style={{ textDecoration: 'none',color:'white' }}>
+        <LinkItem to='/register'>
           Register
         </LinkItem>
-        </Nav.Link>
-        <Nav.Link>
-        <LinkItem to='/login' style={{ textDecoration: 'none',color:'white' }}>
+       
+        <LinkItem to='/login'>
           Log In
         </LinkItem>
-        </Nav.Link>
       </Nav>
     </Navbar.Collapse>
     </Container>
