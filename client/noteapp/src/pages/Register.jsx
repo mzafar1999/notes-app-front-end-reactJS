@@ -13,7 +13,9 @@ const Input = styled.input`
   padding: 0.3rem;
 `;
 const Wrapper = styled.div`
-  margin: 2rem auto;
+  margin: auto;
+  position: relative;
+  top: 200px;
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -50,6 +52,10 @@ const Register = () => {
          if(password===confirmPasswowrd){
             axios.post('http://localhost:5000/api/users/register',newUser)
             console.log('user registered');
+            setemail('')
+            setUsername('')
+            setPassword('')
+            setConfirmPasswowrd('')
          }else{
            alert('Password and Confirm password are not equal!')
          }

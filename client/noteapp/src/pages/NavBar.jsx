@@ -26,10 +26,10 @@ const NavBar = () => {
     logoutUser(dispatch)
   }
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="fixed-top">
       <Container>
         <Navbar.Brand>
-          <LinkItem to={`/`}>Notes</LinkItem>{" "}
+          <LinkItem to={`/`}>Z-Notes</LinkItem>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

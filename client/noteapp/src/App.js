@@ -11,12 +11,14 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import { useSelector } from 'react-redux';
 import CreateNote from './pages/CreateNote';
+import Sidebar from './pages/Sidebar';
 
 function App() {
   const user = useSelector(state=>state.user.currentUser)
   return (
     <Router>
       <NavBar/>
+      <Sidebar/>
       <Switch>
         <Route path={`/register`}>
          {user? <Redirect to='/'/>:<Register/>}
@@ -24,10 +26,10 @@ function App() {
         <Route path={`/login`}>
          {user? <Redirect to='/'/>:<Login/>}
         </Route>
-        <Route exact to='/create-note'>
+        <Route path='/create-note'>
           <CreateNote/>
         </Route>
-        <Route exact to='/'>
+        <Route exact path='/'>
           <Home/>
         </Route>
       </Switch>

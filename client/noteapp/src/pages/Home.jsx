@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import styled from "styled-components";
 import { notes } from "./notes";
 const Home = () => {
   useEffect(() => {
@@ -7,25 +7,28 @@ const Home = () => {
     
   }, [])
   
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1rem;
+  margin-left: 15rem;
+  position: relative;
+  top: 100px;
+`
+const Note = styled.div`
+  margin: 1rem;
+  border: 1px solid black;
+  padding: 10px;
+  min-width: 250px;
+  flex-wrap: wrap;
+  
+`
+
   return (
     <Container>
-      <Row className="d-flex justify-content-center">
-        {notes.map((note,index) => {
-          return (
-            <Col  md={4} xl={3} className='m-3' key={index}>
-              <Card border="info">
-                <Card.Header>Header</Card.Header>
-                <Card.Body>
-                  <Card.Title>Info Card Title</Card.Title>
-                  <Card.Text>
-                    {note.note}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          )
-        })}
-      </Row>
+      {notes.map((note)=>{
+        return <Note>{note.note}</Note>
+      })}
     </Container>
   );
 };
