@@ -1,0 +1,9 @@
+.ql-editor {
+    min-height: 300px;
+}
+
+@media (max-width: 640px) {
+    .ql-editor {
+        min-height: 150px
+    }
+}

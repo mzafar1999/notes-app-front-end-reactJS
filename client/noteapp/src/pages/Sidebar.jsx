@@ -19,7 +19,10 @@ const Wrapper = styled.div`
     height: 100vh;
     width: 200px;
     position: fixed;
-    background-color: #1363f8;
+    background-color: #375bc0;
+    @media (max-width: 640px) {
+        width: 60px;
+      }
 `
 const LinkWrapper = styled.div`
     position: relative;
@@ -28,9 +31,13 @@ const LinkWrapper = styled.div`
 `
 const LinkItem = styled(Link)`
      text-decoration: none;
+     display: block;
+     border: 1px solid white;
+     margin: 10px 0;
+     padding: 5px 5px;
      color: white;
   &:hover {
-    color: #808080;
+    color: #3cd2f8;
   }
   &:focus,
   &:visited,
@@ -38,12 +45,15 @@ const LinkItem = styled(Link)`
   &:active {
     text-decoration: none;
   }
+  
 `
 const Sidebar = () => {
   return (
     <Wrapper>
         <LinkWrapper>
-        <LinkItem to={`/create-note`}>Create Note</LinkItem>        
+        <LinkItem to={`/create-note`}>Create Note</LinkItem>
+        <LinkItem to={`/my-notes`}>My Notes</LinkItem>        
+        
         </LinkWrapper>
     </Wrapper>
   )
