@@ -3,9 +3,11 @@ import styled from "styled-components";
 import './createnote.css'
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useState } from "react";
-import parse from 'html-react-parser';
 import ReactQuill from "react-quill"
 import 'react-quill/dist/quill.snow.css'
+import { publicRequest } from "./Login";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const Wrapper = styled.div`
   margin-left: 10rem;
@@ -27,26 +29,25 @@ const Title = styled.h2`
 
 const CreateNote = () => {
   
+  const user = useSelector(state=>state.user.currentUser)
   
   const [state, setState] = useState({ value: null });
-  const [note,setNote] = useState('')
-
-  const handleCreateNote = e=>{
+  const handleCreateNote = async(e)=>{
     e.preventDefault()
-    setNote(state.value)
+    const res = await axios.post('http://localhost:5000/api/users/note',{note:state.value,user:user.id})
+    console.log(user.id);
 }
   const handleChange = value => {
     setState({ value });
   };
-  const Editor = styled(ReactQuill)`
-      
-  `
+ 
+ 
+
   return (
     <Container>
       <form>
         <Title>Create Note</Title>
         <Wrapper>
-        
       <ReactQuill
         theme='snow'
         value={state.value}
@@ -56,10 +57,6 @@ const CreateNote = () => {
         </Wrapper>
         <br />
       </form>
-      {/* <div style={{marginLeft:'10em'}}>
-          <h1>Notes</h1>
-        {parse(note)}
-      </div> */}
     </Container>
   );
 };

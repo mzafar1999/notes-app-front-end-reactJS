@@ -12,6 +12,7 @@ import Register from './pages/Register';
 import { useSelector } from 'react-redux';
 import CreateNote from './pages/CreateNote';
 import Sidebar from './pages/Sidebar';
+import MyNotes from './pages/MyNotes';
 
 function App() {
   const user = useSelector(state=>state.user.currentUser)
@@ -20,6 +21,9 @@ function App() {
       <NavBar/>
       <Sidebar/>
       <Switch>
+      <Route path='/user-notes'>
+          <MyNotes/>
+        </Route>
         <Route path={`/register`}>
          {user? <Redirect to='/'/>:<Register/>}
         </Route>

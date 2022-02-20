@@ -52,7 +52,7 @@ const Sidebar = () => {
     <Wrapper>
         <LinkWrapper>
         <LinkItem to={`/create-note`}>Create Note</LinkItem>
-        <LinkItem to={`/my-notes`}>My Notes</LinkItem>        
+        <LinkItem to={`/user-notes`}>My Notes</LinkItem>        
         
         </LinkWrapper>
     </Wrapper>

@@ -36,7 +36,7 @@ const LinkItem = styled(Link)`
 `;
 
 const BASE_URL = 'http://localhost:5000/api/'
-const publicRequest = axios.create({
+export const publicRequest = axios.create({
     baseURL: BASE_URL
 })
 

@@ -26,8 +26,8 @@ const Note = styled.div`
 
   return (
     <Container>
-      {notes.map((note)=>{
-        return <Note>{note.note}</Note>
+      {notes.map((note,index)=>{
+        return <Note key={index}>{note.note}</Note>
       })}
     </Container>
   );
