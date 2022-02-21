@@ -21,8 +21,19 @@ const userReducer = createSlice({
         },
         logout: (state) => {
             state.currentUser = null
+        },
+        noteCreate: (state) => {
+            state.isFetching = true
+        },
+        addNote: (state, action) => {
+            state.currentUser.notes.push(action.payload)
+            state.isFetching = false
+        },
+        noteError: (state) => {
+            state.isError = true
+            state.isFetching = false
         }
     }
 })
-export const { loginStart, loginSuccess, loginFailure, logout } = userReducer.actions
+export const { loginStart, loginSuccess, loginFailure, logout, addNote, noteCreate, noteError } = userReducer.actions
 export default userReducer.reducer

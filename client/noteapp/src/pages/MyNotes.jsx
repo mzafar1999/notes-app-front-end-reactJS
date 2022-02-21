@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import parse from 'html-react-parser';
@@ -36,16 +36,22 @@ const Note = styled.div`
   padding: 10px;
   min-width: 250px;
   flex-wrap: wrap;
-  
 `
 const MyNotes = () => {
+  const [userNotes, setUserNotes] = useState([])
   const user = useSelector(state=>state.user.currentUser)
+  const newNote = useSelector(state=>state.note.note.note)
+  useEffect(() => {
+    user && setUserNotes(user.notes)    
+  }, [newNote,userNotes])
+  
   return (
     <Container>{
-      user? user.notes.map((note,i)=>{
+      user? userNotes.map((note,i)=>{
         return <Note key={i}>
-          {parse(note)}
+          {parse(note.note)}
           <Button>Edit</Button>
+          <Button variant='danger' className='mx-2'>Delete</Button>
         </Note>
       })  : <NotLoggedIn>
         Please Log in in order to see your notes!

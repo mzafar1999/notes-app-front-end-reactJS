@@ -7,8 +7,9 @@ import ReactQuill from "react-quill"
 import 'react-quill/dist/quill.snow.css'
 import { publicRequest } from "./Login";
 import axios from "axios";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { noteCreatingStart,noteCreatingSuccess,noteCreatingFailure } from "../redux/noteReducer";
+import { addNote, noteCreate, noteError } from "../redux/userReducers";
 const Wrapper = styled.div`
   margin-left: 10rem;
   margin-top: 5rem;
@@ -26,23 +27,30 @@ const Title = styled.h2`
 `;
 
 
+const createNote = async(dispatch, note) => {
+  dispatch(noteCreate())
+  try {
+      const res = await publicRequest.post('/users/note', note)
+      dispatch(addNote(res.data))
+  } catch (error) {
+      dispatch(noteError())
+  }
+}
+
 
 const CreateNote = () => {
   
   const user = useSelector(state=>state.user.currentUser)
   
   const [state, setState] = useState({ value: null });
+  const dispatch = useDispatch()
   const handleCreateNote = async(e)=>{
     e.preventDefault()
-    const res = await axios.post('http://localhost:5000/api/users/note',{note:state.value,user:user.id})
-    console.log(user.id);
-}
+    createNote(dispatch,{note:state.value,user:user.id})
+  }
   const handleChange = value => {
     setState({ value });
   };
- 
- 
-
   return (
     <Container>
       <form>
